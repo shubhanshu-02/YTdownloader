@@ -10,5 +10,5 @@ if not os.path.exists(playlist_title):
     os.makedirs(playlist_title)
 
 for video in pl.videos:
-    ys = video.streams.get_highest_resolution()
+    ys = video.streams.filter(res="1080p", file_extension="mp4").first()
     ys.download(output_path=playlist_title)
