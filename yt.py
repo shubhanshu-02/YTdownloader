@@ -11,4 +11,8 @@ if not os.path.exists(playlist_title):
 
 for video in pl.videos:
     ys = video.streams.filter(res="1080p", file_extension="mp4").first()
+    audio_stream = video.streams.filter(only_audio=True, file_extension="mp4").first()
+
     ys.download(output_path=playlist_title)
+    audio_stream.download(output_path="audio " + playlist_title)
+
